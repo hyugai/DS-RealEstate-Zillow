@@ -1,3 +1,4 @@
 pandas
 scikit-learn
 tabulate2
+mlflow

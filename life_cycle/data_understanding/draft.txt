@@ -1,0 +1,62 @@
+Shape: (16854, 52)                
+Info: 
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 16854 entries, 0 to 16853
+Data columns (total 52 columns):
+ #   Column                              Non-Null Count  Dtype  
+---  ------                              --------------  -----  
+ 0   zpid                                16854 non-null  int64  
+ 1   streetaddress                       16854 non-null  object 
+ 2   zipcode                             16854 non-null  object 
+ 3   city                                16854 non-null  object 
+ 4   state                               16854 non-null  object 
+ 5   latitude                            16809 non-null  float64
+ 6   longitude                           16809 non-null  float64
+ 7   price                               16851 non-null  float64
+ 8   bathrooms                           16667 non-null  float64
+ 9   bedrooms                            16655 non-null  float64
+ 10  livingarea                          15554 non-null  float64
+ 11  hometype                            16854 non-null  object 
+ 12  homestatus                          16854 non-null  object 
+ 13  daysonzillow                        16854 non-null  int64  
+ 14  isfeatured                          16854 non-null  bool   
+ 15  shouldhighlight                     16854 non-null  bool   
+ 16  zestimate                           9097 non-null   float64
+ 17  rentzestimate                       10366 non-null  float64
+ 18  openhouse                           16854 non-null  object 
+ 19  isunmappable                        16854 non-null  bool   
+ 20  ispreforeclosureauction             16854 non-null  bool   
+ 21  homestatusforhdp                    16854 non-null  object 
+ 22  priceforhdp                         16851 non-null  float64
+ 23  timeonzillow                        14962 non-null  float64
+ 24  isnonowneroccupied                  16854 non-null  bool   
+ 25  ispremierbuilder                    16854 non-null  bool   
+ 26  iszillowowned                       16854 non-null  bool   
+ 27  currency                            16854 non-null  object 
+ 28  country                             16854 non-null  object 
+ 29  taxassessedvalue                    13916 non-null  float64
+ 30  lotareavalue                        14851 non-null  float64
+ 31  lotareaunit                         16854 non-null  object 
+ 32  isshowcaselisting                   16854 non-null  bool   
+ 33  listing_sub_type.is_fsba            16854 non-null  object 
+ 34  listing_sub_type.is_openhouse       16854 non-null  object 
+ 35  open_house_info.open_house_showing  16854 non-null  object 
+ 36  datepricechanged                    5512 non-null   float64
+ 37  pricereduction                      16854 non-null  object 
+ 38  pricechange                         5512 non-null   float64
+ 39  unit                                16854 non-null  object 
+ 40  newconstructiontype                 16854 non-null  object 
+ 41  listing_sub_type.is_newhome         16854 non-null  object 
+ 42  group_type                          16854 non-null  object 
+ 43  pricesuffix                         16854 non-null  object 
+ 44  providerlistingid                   16854 non-null  object 
+ 45  listing_sub_type.is_bankowned       16854 non-null  object 
+ 46  videocount                          199 non-null    float64
+ 47  isrentalwithbaseprice               16854 non-null  object 
+ 48  listing_sub_type.is_forauction      16854 non-null  object 
+ 49  comingsoononmarketdate              76 non-null     float64
+ 50  listing_sub_type.is_comingsoon      16854 non-null  object 
+ 51  listing_sub_type.is_foreclosure     16854 non-null  object 
+dtypes: bool(8), float64(16), int64(2), object(26)
+memory usage: 5.8+ MB
+
