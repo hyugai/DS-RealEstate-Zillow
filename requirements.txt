@@ -1,4 +1,8 @@
 pandas
 scikit-learn
-tabulate2
+xgboost
+catboost
+lightgbm
+optuna
 mlflow
+tabulate2
