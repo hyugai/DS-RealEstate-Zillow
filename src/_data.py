@@ -4,6 +4,7 @@ import pandas as pd
 from typing import Self
 from io import StringIO
 from tabulate2 import tabulate
+from scipy.stats import chi2_contingency
 
 class ReportWriter:
     def __init__(self, 
@@ -36,7 +37,6 @@ class ReportWriter:
                 else:
                     content[current_title] += line
 
-        print(content)
         for title, data in info.items():
             if is_overwritten:
                 content[title] = data
@@ -54,6 +54,20 @@ class DataAnalyzer(ReportWriter):
         self.kept_cols = kept_cols
 
         self.df_cleaned: pd.DataFrame
+
+    def __find_value_above_threshold(self, 
+                                     square_mat: np.ndarray,
+                                     threshold: int, 
+                                     cols: list[str]) -> list[str]:
+        results = []
+        num_iters = len(cols)
+        i = 1
+        while i <= num_iters:
+            for j in range(i):
+                if square_mat[i, j] >= threshold:
+                    results.append(square_mat[i, j])
+
+        return results
 
     def preprocess(self, 
                    is_exported: bool=False) -> Self:
@@ -95,10 +109,13 @@ class DataAnalyzer(ReportWriter):
                                            df_base['lotAreaValue'].div(43560), df_base['lotAreaValue'])
         df_base.drop('lotAreaUnit', axis=1, inplace=True)
 
+        # convert "bool" into "str"
+        bool_cols = df_base.select_dtypes(bool).columns.tolist()
+        df_base[bool_cols] = df_base[bool_cols].astype(str)
+
         # report
         buf = StringIO()
         df_base.info(buf=buf)
-        # temporary
         self.write_report({'##Info': '\n' + buf.getvalue() + '\n'}, True)
 
         # export
@@ -113,9 +130,6 @@ class DataAnalyzer(ReportWriter):
                           is_attached_to_report: bool=False) -> Self:
         df = self.df_cleaned.copy()
 
-        bool_cols = df.select_dtypes(bool).columns.tolist()
-        df[bool_cols] = df[bool_cols].astype(str) 
-
         # report
         cat_stats = '\n' + tabulate(df.select_dtypes(include="object").describe().T, headers="keys", tablefmt="psql") + '\n'
         num_stats = '\n' + tabulate(df.select_dtypes(include=np.number).describe([0.01, 0.25, 0.50, 0.75, 0.99]).T, headers="keys", tablefmt="psql") + '\n'
@@ -126,3 +140,12 @@ class DataAnalyzer(ReportWriter):
     def get_inferential_stats(self,
                               is_attached_to_report: bool=False) -> Self:
         df = self.df_cleaned.copy()
+        cat_cols = df.select_dtypes('object').columns.tolist()
+        num_cols = df.select_dtypes(np.number).columns.tolist()
+
+        # cat: dependency test
+        num_iters = len(cat_cols)
+        arr = np.zeros((num_iters, num_iters))
+
+    def analyze_price(self) -> None:
+        pass

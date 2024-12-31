@@ -14,13 +14,13 @@ Data columns (total 14 columns):
  6   bedrooms          16655 non-null  float64
  7   livingArea        15554 non-null  float64
  8   homeType          16854 non-null  object 
- 9   isPremierBuilder  16854 non-null  bool   
+ 9   isPremierBuilder  16854 non-null  object 
  10  country           16854 non-null  object 
  11  taxAssessedValue  13916 non-null  float64
  12  lotAreaValue      14851 non-null  float64
  13  price             16851 non-null  float64
-dtypes: bool(1), float64(8), object(5)
-memory usage: 1.7+ MB
+dtypes: float64(8), object(6)
+memory usage: 1.8+ MB
 
 ##Categorical Stats
 

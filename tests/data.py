@@ -21,4 +21,5 @@ kept_cols =  ['zipcode', 'city', 'state', 'latitude', 'longitude',
 data_analyzer = DataAnalyzer(paths, kept_cols)
 data_analyzer\
         .preprocess()\
-        .get_descriptive_stats()
+        .get_descriptive_stats()\
+        .get_inferential_stats()
